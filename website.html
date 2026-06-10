@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弈道 - 專業圍棋教育平台</title>
+    <style>
+        /* 全局重置與基本設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang TC", "微軟正黑體", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* 導覽列 */
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #dcb35c; /* 木紋/棋盤色 */
+        }
+
+        /* 主視覺區 (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1580218318721-a2091c6bf908?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 5px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .btn {
+            background-color: #dcb35c;
+            color: #1a1a1a;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #c49d4b;
+        }
+
+        /* 課程區塊 */
+        .courses {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .courses h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .course-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid #1a1a1a;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid #dcb35c;
+        }
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .course-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">弈道</div>
+            <ul class="nav-links">
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#courses">課程介紹</a></li>
+                <li><a href="#contact">聯絡報名</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>黑白之間，方寸之宇宙</h1>
+        <p>無論你是初學者還是想要精進棋藝的段位好手，我們提供最專業、系統化的圍棋教學，帶你領略圍棋的深奧與樂趣。</p>
+        <a href="#courses" class="btn">開始學習</a>
+    </section>
+
+    <section id="courses" class="courses">
+        <h2>教學體系</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <h3>啟蒙班 (級位 30-20)</h3>
+                <p>從吃子遊戲開始，認識氣、打吃、提子等基本規則。培養孩子的專注力與邏輯思維，在快樂中愛上圍棋。</p>
+                <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
+            </div>
+            
+            <div class="course-card">
+                <h3>進階班 (級位 19-1)</h3>
+                <p>學習基本定石、佈局觀念與中盤戰鬥技巧。透過大量死活題訓練計算力，為升段打下堅實基礎。</p>
+                <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
+            </div>
+
+            <div class="course-card">
+                <h3>段位研修班 (1段-6段)</h3>
+                <p>針對段位學員進行高強度實戰覆盤，解析AI(如 Katago) 現代佈局勝率，深入探討形勢判斷與大局觀。</p>
+                <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2026 弈道圍棋教育平台. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Email: info@yidaogo.example.com | 電話: (02) 1234-5678</p>
+    </footer>
+
+</body>
+</html>
