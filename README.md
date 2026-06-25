@@ -1,2 +1,0 @@
-# WEIQI
-WEIQI TUTOR
