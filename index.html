@@ -91,17 +91,63 @@
             background-color: #c49d4b;
         }
 
+        /* 關於我們區塊 */
+        .about {
+            max-width: 1000px;
+            margin: 5rem auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        .about p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            text-justify: inter-ideograph;
+        }
+        .about-features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .feature-item h4 {
+            color: #dcb35c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
         /* 課程區塊 */
         .courses {
             max-width: 1200px;
-            margin: 4rem auto;
+            margin: 5rem auto;
             padding: 0 20px;
             text-align: center;
         }
         .courses h2 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: #1a1a1a;
+        }
+        .course-intro {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
         }
         .course-grid {
             display: grid;
@@ -158,24 +204,52 @@
         <a href="#courses" class="btn">開始學習</a>
     </section>
 
+    <!-- 新增的「關於我們」區塊 -->
+    <section id="about" class="about">
+        <h2>關於弈道</h2>
+        <p>「弈道」成立的初衷，是希望能將圍棋這項充滿智慧與哲理的傳統藝術，以現代化、系統化的方式推廣給更多人。我們相信，圍棋不僅僅是一項競技智力運動，更是培養大局觀、鍛鍊邏輯思維與抗壓性的最佳途徑。</p>
+        <p>我們的師資團隊由多位具備豐富教學經驗的資深棋士組成，課程設計融合了傳統棋理與現代 AI 分析技術。在這裡，我們不僅教導技術，更傳遞「以棋會友、棋如人生」的道家精神，陪伴每一位學員在黑白交錯的世界中成長。</p>
+        
+        <div class="about-features">
+            <div class="feature-item">
+                <h4>專業師資陣容</h4>
+                <p>皆具有高段位實力及多年教學經驗，懂棋更懂教學。</p>
+            </div>
+            <div class="feature-item">
+                <h4>結合 AI 訓練</h4>
+                <p>引入最新 AI 工具進行覆盤與勝率解析，學習更有效率。</p>
+            </div>
+            <div class="feature-item">
+                <h4>舒適對弈空間</h4>
+                <p>提供明亮、安靜的實體教室及線上對弈平台，隨時都能下棋。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 擴充內容的「課程介紹」區塊 -->
     <section id="courses" class="courses">
-        <h2>教學體系</h2>
+        <h2>教學體系與課程</h2>
+        <p class="course-intro">我們針對不同年齡與程度的學員，設計了完整的晉升階梯。無論是想培養孩子專注力的家長，還是渴望突破瓶頸的業餘好手，都能在這裡找到合適的課程。</p>
+        
         <div class="course-grid">
             <div class="course-card">
                 <h3>啟蒙班 (級位 30-20)</h3>
-                <p>從吃子遊戲開始，認識氣、打吃、提子等基本規則。培養孩子的專注力與邏輯思維，在快樂中愛上圍棋。</p>
+                <p>從吃子遊戲開始，認識氣、打吃、提子等基本規則。透過生動有趣的故事與圖解，培養孩子的專注力與邏輯思維，在快樂中愛上圍棋。</p>
+                <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">※ 適合年齡：4歲以上零基礎</p>
                 <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
             </div>
             
             <div class="course-card">
                 <h3>進階班 (級位 19-1)</h3>
-                <p>學習基本定石、佈局觀念與中盤戰鬥技巧。透過大量死活題訓練計算力，為升段打下堅實基礎。</p>
+                <p>學習基本定石、佈局觀念與中盤戰鬥技巧。課程包含大量死活題訓練與手筋解析，有效提升計算力，為升段打下堅實基礎。</p>
+                <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">※ 適合對象：已具備基本吃子能力者</p>
                 <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
             </div>
 
             <div class="course-card">
                 <h3>段位研修班 (1段-6段)</h3>
-                <p>針對段位學員進行高強度實戰覆盤，解析AI(如 Katago) 現代佈局勝率，深入探討形勢判斷與大局觀。</p>
+                <p>針對段位學員進行高強度實戰覆盤，解析 AI (如 Katago) 現代佈局勝率與定型手法，深入探討形勢判斷、大局觀與終盤收官技巧。</p>
+                <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">※ 適合對象：目標晉升至業餘高段者</p>
                 <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
             </div>
         </div>
