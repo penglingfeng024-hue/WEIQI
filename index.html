@@ -6,11 +6,7 @@
     <title>弈道 - 專業圍棋教育平台</title>
     <style>
         /* 全局重置與基本設定 */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, "PingFang TC", "微軟正黑體", sans-serif;
             line-height: 1.6;
@@ -35,49 +31,11 @@
             align-items: center;
             padding: 0 20px;
         }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-        .nav-links li {
-            margin-left: 20px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #dcb35c; /* 木紋/棋盤色 */
-        }
-
-        /* 主視覺區 (Hero Section) */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1580218318721-a2091c6bf908?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: 5px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
+        .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: #dcb35c; }
         .btn {
             background-color: #dcb35c;
             color: #1a1a1a;
@@ -86,103 +44,145 @@
             font-weight: bold;
             border-radius: 4px;
             transition: background 0.3s;
+            display: inline-block;
         }
-        .btn:hover {
-            background-color: #c49d4b;
-        }
+        .btn:hover { background-color: #c49d4b; }
 
-        /* 關於我們區塊 */
-        .about {
-            max-width: 1000px;
-            margin: 5rem auto;
-            padding: 0 20px;
-            text-align: center;
+        /* --- 1. 幻燈片 (Hero Slider) 區塊 --- */
+        .slider-container {
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+            background-color: #1a1a1a;
         }
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-        }
-        .about p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            text-align: justify;
-            text-justify: inter-ideograph;
-        }
-        .about-features {
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
             display: flex;
-            justify-content: space-around;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-        .feature-item {
-            flex: 1;
-            min-width: 250px;
-            margin: 10px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .feature-item h4 {
-            color: #dcb35c;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        /* 課程區塊 */
-        .courses {
-            max-width: 1200px;
-            margin: 5rem auto;
-            padding: 0 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            color: #fff;
+            padding: 0 20px;
         }
-        .courses h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
+        .slide.active { opacity: 1; z-index: 1; }
+        .slide::before { /* 圖片遮罩，讓文字更清楚 */
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
         }
-        .course-intro {
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto 3rem auto;
-        }
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .slide-content { position: relative; z-index: 2; }
+        .slide-content h1 { font-size: 3.5rem; margin-bottom: 1rem; letter-spacing: 5px; }
+        .slide-content p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;}
+
+        /* --- 2. 佈局：左側卡片網格 + 右側最新消息 --- */
+        .news-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
         }
-        .course-card {
+        /* 左側網格 */
+        .news-main {
+            flex: 3;
+            min-width: 60%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .news-card {
             background: #fff;
             border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.3s;
-            border-top: 4px solid #1a1a1a;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
-        .course-card:hover {
-            transform: translateY(-5px);
-            border-top: 4px solid #dcb35c;
+        .news-card:hover { transform: translateY(-5px); }
+        .news-card-img {
+            width: 100%;
+            height: 180px;
+            background-color: #4a6fa5; /* 模擬參考圖的藍色底圖 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .course-card h3 {
-            font-size: 1.5rem;
+        .news-card-img::after {
+            content: '📷';
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+        .news-card-content { padding: 15px; }
+        .news-card-content h4 { font-size: 1rem; margin-bottom: 8px; color: #1a1a1a; line-height: 1.4; }
+        .news-card-content p { font-size: 0.85rem; color: #888; }
+
+        /* 右側最新消息 (Sidebar) */
+        .news-sidebar {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            align-self: flex-start;
+        }
+        .sidebar-title {
+            font-size: 1.2rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
             margin-bottom: 15px;
+            color: #333;
+            font-weight: bold;
         }
-        .course-card p {
-            color: #666;
-            margin-bottom: 20px;
+        .sidebar-list { list-style: none; }
+        .sidebar-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .sidebar-list li:last-child {
+            margin-bottom: 0; padding-bottom: 0; border-bottom: none;
+        }
+        .sidebar-list a {
+            text-decoration: none;
+            color: #444;
+            font-size: 0.95rem;
+            display: block;
+            line-height: 1.5;
+            transition: color 0.3s;
+        }
+        .sidebar-list a:hover { color: #dcb35c; }
+        .sidebar-date {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 6px;
+            display: block;
         }
 
-        /* 頁尾 */
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
+        /* 關於我們與課程區塊 (保持原樣略作排版微調) */
+        .about, .courses { max-width: 1000px; margin: 4rem auto; padding: 0 20px; text-align: center; }
+        .about h2, .courses h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: #1a1a1a; }
+        .about-features { display: flex; justify-content: space-around; margin-top: 2rem; flex-wrap: wrap; }
+        .feature-item { flex: 1; min-width: 250px; margin: 10px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .feature-item h4 { color: #dcb35c; font-size: 1.2rem; margin-bottom: 10px; }
+        
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 2rem; }
+        .course-card { background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; border-top: 4px solid #1a1a1a; }
+        .course-card:hover { transform: translateY(-5px); border-top: 4px solid #dcb35c; }
+        .course-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        footer { background-color: #1a1a1a; color: #fff; text-align: center; padding: 2rem 0; margin-top: 4rem; }
     </style>
 </head>
 <body>
@@ -198,18 +198,88 @@
         </div>
     </header>
 
-    <section class="hero">
-        <h1>黑白之間，方寸之宇宙</h1>
-        <p>無論你是初學者還是想要精進棋藝的段位好手，我們提供最專業、系統化的圍棋教學，帶你領略圍棋的深奧與樂趣。</p>
-        <a href="#courses" class="btn">開始學習</a>
+    <!-- 1. 幻燈片區塊 -->
+    <section class="slider-container">
+        <!-- 第一張幻燈片 (active 預設顯示) -->
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1580218318721-a2091c6bf908?auto=format&fit=crop&w=1200&q=80');">
+            <div class="slide-content">
+                <h1>黑白之間，方寸之宇宙</h1>
+                <p>無論你是初學者還是想要精進棋藝的段位好手，我們提供最專業、系統化的圍棋教學。</p>
+                <a href="#courses" class="btn">開始學習</a>
+            </div>
+        </div>
+        <!-- 第二張幻燈片 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80');">
+            <div class="slide-content">
+                <h1>專業師資，全新體驗</h1>
+                <p>結合最新 AI 工具進行覆盤與勝率解析，讓你的學習更有效率、突破瓶頸。</p>
+                <a href="#contact" class="btn">聯絡我們</a>
+            </div>
+        </div>
+        <!-- 第三張幻燈片 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=80');">
+            <div class="slide-content">
+                <h1>培養邏輯與大局觀</h1>
+                <p>不僅教導技術，更傳遞「以棋會友、棋如人生」的精神，陪伴學員成長。</p>
+                <a href="#about" class="btn">了解更多</a>
+            </div>
+        </div>
     </section>
 
-    <!-- 新增的「關於我們」區塊 -->
+    <!-- 2. 最新消息與文章佈局 (模仿截圖) -->
+    <section class="news-section">
+        <!-- 左側：卡片網格 -->
+        <div class="news-main">
+            <a href="#" class="news-card">
+                <div class="news-card-img"></div>
+                <div class="news-card-content">
+                    <h4>【比賽消息】第二十四屆公開賽暨國際象棋公開賽</h4>
+                    <p>2026年11月1日</p>
+                </div>
+            </a>
+            <a href="#" class="news-card">
+                <div class="news-card-img"></div>
+                <div class="news-card-content">
+                    <h4>【比賽消息】11月衝段賽 (銅鑼灣院)</h4>
+                    <p>2026年11月1日 衝段賽章程</p>
+                </div>
+            </a>
+            <a href="#" class="news-card">
+                <div class="news-card-img"></div>
+                <div class="news-card-content">
+                    <h4>【比賽章程】第二十二屆全港幼兒圍棋大賽</h4>
+                    <p>2026年10月19日 章程下載</p>
+                </div>
+            </a>
+        </div>
+        
+        <!-- 右側：最新消息側邊欄 -->
+        <aside class="news-sidebar">
+            <h3 class="sidebar-title">最新消息</h3>
+            <ul class="sidebar-list">
+                <li>
+                    <a href="#">【比賽消息】第二十四屆公開賽 暨 第二屆國際象棋公開賽</a>
+                    <span class="sidebar-date">9 11 月, 2026</span>
+                </li>
+                <li>
+                    <a href="#">【比賽消息】11月衝段賽(銅鑼灣院) (1/11/2026)</a>
+                    <span class="sidebar-date">21 9 月, 2026</span>
+                </li>
+                <li>
+                    <a href="#">【比賽章程】第二十二屆全港幼兒圍棋大賽(19/10/2026)</a>
+                    <span class="sidebar-date">2 9 月, 2026</span>
+                </li>
+                <li>
+                    <a href="#">【比賽章程】2026年秋季圍棋錦標賽(1/10/2026)</a>
+                    <span class="sidebar-date">3 9 月, 2026</span>
+                </li>
+            </ul>
+        </aside>
+    </section>
+
+    <!-- 原本的「關於我們」區塊 -->
     <section id="about" class="about">
         <h2>關於弈道</h2>
-        <p>「弈道」成立的初衷，是希望能將圍棋這項充滿智慧與哲理的傳統藝術，以現代化、系統化的方式推廣給更多人。我們相信，圍棋不僅僅是一項競技智力運動，更是培養大局觀、鍛鍊邏輯思維與抗壓性的最佳途徑。</p>
-        <p>我們的師資團隊由多位具備豐富教學經驗的資深棋士組成，課程設計融合了傳統棋理與現代 AI 分析技術。在這裡，我們不僅教導技術，更傳遞「以棋會友、棋如人生」的道家精神，陪伴每一位學員在黑白交錯的世界中成長。</p>
-        
         <div class="about-features">
             <div class="feature-item">
                 <h4>專業師資陣容</h4>
@@ -226,31 +296,21 @@
         </div>
     </section>
 
-    <!-- 擴充內容的「課程介紹」區塊 -->
+    <!-- 原本的「課程介紹」區塊 -->
     <section id="courses" class="courses">
         <h2>教學體系與課程</h2>
-        <p class="course-intro">我們針對不同年齡與程度的學員，設計了完整的晉升階梯。無論是想培養孩子專注力的家長，還是渴望突破瓶頸的業餘好手，都能在這裡找到合適的課程。</p>
-        
         <div class="course-grid">
             <div class="course-card">
                 <h3>啟蒙班 (級位 30-20)</h3>
                 <p>從吃子遊戲開始，認識氣、打吃、提子等基本規則。透過生動有趣的故事與圖解，培養孩子的專注力與邏輯思維，在快樂中愛上圍棋。</p>
-                <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">※ 適合年齡：4歲以上零基礎</p>
-                <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
             </div>
-            
             <div class="course-card">
                 <h3>進階班 (級位 19-1)</h3>
                 <p>學習基本定石、佈局觀念與中盤戰鬥技巧。課程包含大量死活題訓練與手筋解析，有效提升計算力，為升段打下堅實基礎。</p>
-                <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">※ 適合對象：已具備基本吃子能力者</p>
-                <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
             </div>
-
             <div class="course-card">
                 <h3>段位研修班 (1段-6段)</h3>
-                <p>針對段位學員進行高強度實戰覆盤，解析 AI (如 Katago) 現代佈局勝率與定型手法，深入探討形勢判斷、大局觀與終盤收官技巧。</p>
-                <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">※ 適合對象：目標晉升至業餘高段者</p>
-                <a href="#" style="color: #dcb35c; text-decoration: none; font-weight: bold;">了解詳情 →</a>
+                <p>針對段位學員進行高強度實戰覆盤，解析 AI 現代佈局勝率與定型手法，深入探討形勢判斷、大局觀與終盤收官技巧。</p>
             </div>
         </div>
     </section>
@@ -260,5 +320,24 @@
         <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Email: info@yidaogo.example.com | 電話: (02) 1234-5678</p>
     </footer>
 
+    <!-- 幻燈片控制腳本 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            // 每 5000 毫秒 (5秒) 執行一次切換
+            setInterval(() => {
+                // 移除當前幻燈片的 active 狀態
+                slides[currentSlide].classList.remove('active');
+                
+                // 計算下一張幻燈片的索引
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // 為下一張幻燈片加上 active 狀態
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
