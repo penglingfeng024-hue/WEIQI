@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>弈道 - 專業圍棋教育平台</title>
+    <title>卓越多元學苑 (LDA) - 科技賦能教育・文化連結社區</title>
     <style>
         /* 全局重置與基本設定 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,10 +31,10 @@
             align-items: center;
             padding: 0 20px;
         }
-        .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
         .nav-links { list-style: none; display: flex; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        .nav-links a { color: #fff; text-decoration: none; transition: color 0.3s; font-size: 0.95rem; }
         .nav-links a:hover { color: #dcb35c; }
         .btn {
             background-color: #dcb35c;
@@ -75,12 +75,12 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1;
         }
         .slide-content { position: relative; z-index: 2; }
-        .slide-content h1 { font-size: 3.5rem; margin-bottom: 1rem; letter-spacing: 5px; }
-        .slide-content p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;}
+        .slide-content h1 { font-size: 3rem; margin-bottom: 1rem; letter-spacing: 3px; }
+        .slide-content p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;}
 
         /* 佈局：左側卡片網格 + 右側最新消息 */
         .news-section {
@@ -91,8 +91,6 @@
             flex-wrap: wrap;
             gap: 30px;
         }
-        
-        /* 左側網格 */
         .news-main {
             flex: 3;
             min-width: 60%;
@@ -111,8 +109,6 @@
             display: block;
         }
         .news-card:hover { transform: translateY(-5px); }
-        
-        /* 卡片圖片設定 */
         .news-card-img {
             width: 100%;
             height: 180px;
@@ -120,85 +116,59 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            object-fit: cover; /* 讓真實圖片保持比例填滿 */
+            object-fit: cover;
         }
-        /* 只有 div 標籤（預設無圖片時）才顯示相機 icon */
-        div.news-card-img::after {
-            content: '📷';
-            font-size: 3rem;
-            opacity: 0.5;
-        }
-        
+        div.news-card-img::after { content: '📷'; font-size: 3rem; opacity: 0.5; }
         .news-card-content { padding: 15px; }
         .news-card-content h4 { font-size: 1rem; margin-bottom: 8px; color: #1a1a1a; line-height: 1.4; }
         .news-card-content p { font-size: 0.85rem; color: #888; }
 
-        /* 右側最新消息 (Sidebar) */
+        /* 右側 Facebook 粉絲專頁嵌入區 */
         .news-sidebar {
             flex: 1;
             min-width: 300px;
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             align-self: flex-start;
         }
-        .sidebar-title {
-            font-size: 1.2rem;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-            color: #333;
-            font-weight: bold;
-        }
-        .sidebar-list { list-style: none; }
-        .sidebar-list li {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #eee;
-        }
-        .sidebar-list li:last-child {
-            margin-bottom: 0; padding-bottom: 0; border-bottom: none;
-        }
-        .sidebar-list a {
-            text-decoration: none;
-            color: #444;
-            font-size: 0.95rem;
-            display: block;
-            line-height: 1.5;
-            transition: color 0.3s;
-        }
-        .sidebar-list a:hover { color: #dcb35c; }
-        .sidebar-date {
-            font-size: 0.8rem;
-            color: #999;
-            margin-top: 6px;
-            display: block;
-        }
 
-        /* 關於我們與課程區塊 */
-        .about, .courses { max-width: 1000px; margin: 4rem auto; padding: 0 20px; text-align: center; }
-        .about h2, .courses h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: #1a1a1a; }
+        /* 關於我們區塊 */
+        .about { max-width: 1000px; margin: 4rem auto; padding: 0 20px; text-align: center; }
+        .about h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: #1a1a1a; }
+        .about > p { font-size: 1.1rem; color: #555; text-align: justify; margin-bottom: 1rem; }
         .about-features { display: flex; justify-content: space-around; margin-top: 2rem; flex-wrap: wrap; }
-        .feature-item { flex: 1; min-width: 250px; margin: 10px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .feature-item { flex: 1; min-width: 250px; margin: 10px; padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .feature-item h4 { color: #dcb35c; font-size: 1.2rem; margin-bottom: 10px; }
-        
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 2rem; }
-        .course-card { background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; border-top: 4px solid #1a1a1a; }
-        .course-card:hover { transform: translateY(-5px); border-top: 4px solid #dcb35c; }
-        .course-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
 
-        footer { background-color: #1a1a1a; color: #fff; text-align: center; padding: 2rem 0; margin-top: 4rem; }
+        /* 課程介紹區塊 */
+        .courses { max-width: 1200px; margin: 4rem auto; padding: 0 20px; }
+        .courses-header { text-align: center; margin-bottom: 3rem; }
+        .courses-header h2 { font-size: 2.2rem; color: #1a1a1a; margin-bottom: 10px;}
+        .courses-header p { color: #666; font-size: 1.1rem; }
+        
+        .section-title { font-size: 1.6rem; color: #1a1a1a; border-left: 5px solid #dcb35c; padding-left: 15px; margin: 2rem 0 1.5rem 0; }
+        
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .course-card { background: #fff; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; border-top: 4px solid #1a1a1a; display: flex; flex-direction: column;}
+        .course-card:hover { transform: translateY(-5px); border-top: 4px solid #dcb35c; }
+        .course-card h3 { font-size: 1.3rem; margin-bottom: 5px; color: #222; }
+        .course-meta { font-size: 0.9rem; color: #777; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #eee; }
+        .course-price { font-size: 1.5rem; color: #dcb35c; font-weight: bold; margin-bottom: 15px; }
+        .course-price span { font-size: 0.9rem; color: #888; font-weight: normal; }
+        .course-card p { color: #555; font-size: 0.95rem; flex-grow: 1; }
+
+        footer { background-color: #1a1a1a; color: #fff; text-align: center; padding: 3rem 20px; margin-top: 4rem; line-height: 1.8; }
+        .footer-contact { margin-top: 15px; font-size: 0.95rem; color: #ccc; }
+        .footer-contact strong { color: #dcb35c; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <div class="logo">弈道</div>
+            <div class="logo">卓越多元學苑 LDA</div>
             <ul class="nav-links">
                 <li><a href="#about">關於我們</a></li>
-                <li><a href="#courses">課程介紹</a></li>
+                <li><a href="#go-courses">圍棋課程</a></li>
+                <li><a href="#other-courses">AI與學術</a></li>
                 <li><a href="#contact">聯絡報名</a></li>
             </ul>
         </div>
@@ -208,122 +178,172 @@
     <section class="slider-container">
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1580218318721-a2091c6bf908?auto=format&fit=crop&w=1200&q=80');">
             <div class="slide-content">
-                <h1>黑白之間，方寸之宇宙</h1>
-                <p>無論你是初學者還是想要精進棋藝的段位好手，我們提供最專業、系統化的圍棋教學。</p>
-                <a href="#courses" class="btn">開始學習</a>
+                <h1>科技賦能教育・文化連結社區</h1>
+                <p>我們提供專業圍棋傳承、AI 技能培訓、學術輔導及多元文化教育，為學生提供全方位的成長支援。</p>
+                <a href="#go-courses" class="btn">探索課程</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80');">
             <div class="slide-content">
-                <h1>專業師資，全新體驗</h1>
-                <p>結合最新 AI 工具進行覆盤與勝率解析，讓你的學習更有效率、突破瓶頸。</p>
-                <a href="#contact" class="btn">聯絡我們</a>
+                <h1>專業三語教學，打破語言界限</h1>
+                <p>由野狐9段彭老師親授，提供粵語、普通話及英文教學，並設立少數族裔專屬課程，推動社區共融。</p>
+                <a href="#about" class="btn">了解師資</a>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=80');">
             <div class="slide-content">
-                <h1>培養邏輯與大局觀</h1>
-                <p>不僅教導技術，更傳遞「以棋會友、棋如人生」的精神，陪伴學員成長。</p>
-                <a href="#about" class="btn">了解更多</a>
+                <h1>緊貼時代，掌握 AI 未來</h1>
+                <p>將 AI 技術融入教學，除了 AI 圍棋覆盤，更開設生成式 AI 實戰工作坊，提升青少年數碼競爭力。</p>
+                <a href="#other-courses" class="btn">查看 AI 課程</a>
             </div>
         </div>
     </section>
 
     <!-- 最新消息與文章佈局 -->
     <section class="news-section">
-        <!-- 左側：卡片網格 -->
         <div class="news-main">
-            <!-- 加入了真實圖片的卡片 (使用 img 標籤) -->
-            <a href="#" class="news-card">
+            <!-- 示範卡片 -->
+            <a href="https://www.facebook.com/your-page-link" target="_blank" class="news-card">
                 <img class="news-card-img" src="https://scontent-hkg1-1.xx.fbcdn.net/v/t51.82787-15/885680272_18138534538758677_6707550512594129242_n.jpg?stp=dst-jpg_tt6&cstp=mx1044x1392&ctp=s1044x1392&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=crK1s2PR9jsQ7kNvwErhe-9&_nc_oc=AdpzKtTjIWD6GAOChryh0yiQ2FgWxpW88sqkhrPvYV7D2fW0w34u6kKAGgic5tWMQAA&_nc_zt=23&_nc_ht=scontent-hkg1-1.xx&_nc_gid=KmKjp2PRAUhPUv1aWheJfQ&_nc_ss=7b2a8&oh=00_AQSNn6AO_qA9FFK2oLU8ASu5tye4eZcoL_vGAbv6BzFOoQ&oe=6AF8B07C" alt="比賽活動圖片">
                 <div class="news-card-content">
-                    <h4>【比賽消息】第二十四屆公開賽暨國際象棋公開賽</h4>
-                    <p>2026年11月1日</p>
-                </div>
-            </a>
-            
-            <!-- 未加入圖片的預設卡片 (使用 div 標籤) -->
-            <a href="#" class="news-card">
-                <div class="news-card-img"></div>
-                <div class="news-card-content">
-                    <h4>【比賽消息】11月衝段賽 (銅鑼灣院)</h4>
-                    <p>2026年11月1日 衝段賽章程</p>
+                    <h4>【比賽消息】本月最新圍棋賽事報名與章程</h4>
+                    <p>點擊查看 Facebook 詳細資訊</p>
                 </div>
             </a>
             <a href="#" class="news-card">
                 <div class="news-card-img"></div>
                 <div class="news-card-content">
-                    <h4>【比賽章程】第二十二屆全港幼兒圍棋大賽</h4>
-                    <p>2026年10月19日 章程下載</p>
+                    <h4>【社區活動】多元文化共融工作坊花絮</h4>
+                    <p>了解我們與社福機構的合作</p>
+                </div>
+            </a>
+            <a href="#" class="news-card">
+                <div class="news-card-img"></div>
+                <div class="news-card-content">
+                    <h4>【課程快訊】生成式 AI 實戰工作坊現正招生</h4>
+                    <p>立即報名提升數碼競爭力</p>
                 </div>
             </a>
         </div>
         
-        <!-- 右側：最新消息側邊欄 -->
+        <!-- 右側：替換成 Facebook 粉絲專頁插件 (請替換 href 中的網址為真實粉專) -->
         <aside class="news-sidebar">
-            <h3 class="sidebar-title">最新消息</h3>
-            <ul class="sidebar-list">
-                <li>
-                    <a href="#">【比賽消息】第二十四屆公開賽 暨 第二屆國際象棋公開賽</a>
-                    <span class="sidebar-date">9 11 月, 2026</span>
-                </li>
-                <li>
-                    <a href="#">【比賽消息】11月衝段賽(銅鑼灣院) (1/11/2026)</a>
-                    <span class="sidebar-date">21 9 月, 2026</span>
-                </li>
-                <li>
-                    <a href="#">【比賽章程】第二十二屆全港幼兒圍棋大賽(19/10/2026)</a>
-                    <span class="sidebar-date">2 9 月, 2026</span>
-                </li>
-                <li>
-                    <a href="#">【比賽章程】2026年秋季圍棋錦標賽(1/10/2026)</a>
-                    <span class="sidebar-date">3 9 月, 2026</span>
-                </li>
-            </ul>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
+                    width="100%" height="500" style="border:none;overflow:hidden; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
         </aside>
     </section>
 
     <!-- 關於我們 -->
     <section id="about" class="about">
-        <h2>關於弈道</h2>
+        <h2>關於卓越多元學苑</h2>
+        <p>「卓越多元學苑 (Lumina Diversity Academy)」隸屬於科創無限極有限公司 (Ever Next Limited)。我們以<strong>「科技賦能教育・文化連結社區」</strong>為核心理念，結合深厚的科技行業經驗，提供圍棋國粹傳承、AI 培訓、學術輔導及多元文化教育四大核心服務。</p>
+        <p>由香港圍棋協會業餘5段、野狐9段的<strong>彭老師（彭凌鋒）</strong>領軍。彭老師具備逾5年教學經驗，能以白話（粵語）、普通話及英文進行三語教學，打破語言障礙，致力將優質教育資源帶入多元文化社區。</p>
+        
         <div class="about-features">
             <div class="feature-item">
-                <h4>專業師資陣容</h4>
-                <p>皆具有高段位實力及多年教學經驗，懂棋更懂教學。</p>
+                <h4>三語專業教學</h4>
+                <p>粵語、普通話、英文靈活授課，精準對接本地及少數族裔學生的語言需求。</p>
             </div>
             <div class="feature-item">
-                <h4>結合 AI 訓練</h4>
-                <p>引入最新 AI 工具進行覆盤與勝率解析，學習更有效率。</p>
+                <h4>AI 科技賦能</h4>
+                <p>將最新 AI 技術融入教學，從圍棋 AI 覆盤到生成式 AI 實戰，走在教育前沿。</p>
             </div>
             <div class="feature-item">
-                <h4>舒適對弈空間</h4>
-                <p>提供明亮、安靜的實體教室及線上對弈平台，隨時都能下棋。</p>
+                <h4>深耕社區共融</h4>
+                <p>與 HOME Centre 及 MAC 緊密合作，為弱勢家庭與少數族裔提供專屬培訓資源。</p>
             </div>
         </div>
     </section>
 
     <!-- 課程介紹 -->
-    <section id="courses" class="courses">
-        <h2>教學體系與課程</h2>
+    <section id="go-courses" class="courses">
+        <div class="courses-header">
+            <h2>教學體系與課程收費</h2>
+            <p>我們提供小班制教學（每班 4-8 人），兼具商業可持續性與教育公平的核心價值。</p>
+        </div>
+
+        <h3 class="section-title">國粹傳承 ‧ 專業圍棋課程</h3>
         <div class="course-grid">
             <div class="course-card">
-                <h3>啟蒙班 (級位 30-20)</h3>
-                <p>從吃子遊戲開始，認識氣、打吃、提子等基本規則。透過生動有趣的故事與圖解，培養孩子的專注力與邏輯思維，在快樂中愛上圍棋。</p>
+                <h3>圍棋啟蒙班</h3>
+                <div class="course-meta">適合：初學兒童 / 青少年 | 級位 30-20</div>
+                <div class="course-price">$180 <span>/ 堂 (1小時)</span></div>
+                <p>從基本規則與吃子遊戲開始，培養孩子的專注力與邏輯思維，在快樂中愛上圍棋。</p>
             </div>
             <div class="course-card">
-                <h3>進階班 (級位 19-1)</h3>
-                <p>學習基本定石、佈局觀念與中盤戰鬥技巧。課程包含大量死活題訓練與手筋解析，有效提升計算力，為升段打下堅實基礎。</p>
+                <h3>中級進階班</h3>
+                <div class="course-meta">適合：具基礎之學生 | 級位 19-5</div>
+                <div class="course-price">$250 <span>/ 堂 (1.5小時)</span></div>
+                <p>學習基本定石、佈局觀念與中盤戰鬥技巧。大量死活題訓練與手筋解析，有效提升計算力。</p>
             </div>
             <div class="course-card">
-                <h3>段位研修班 (1段-6段)</h3>
-                <p>針對段位學員進行高強度實戰覆盤，解析 AI 現代佈局勝率與定型手法，深入探討形勢判斷、大局觀與終盤收官技巧。</p>
+                <h3>高級晉級班</h3>
+                <div class="course-meta">適合：進階棋手 | 級位 5-1</div>
+                <div class="course-price">$320 <span>/ 堂 (2小時)</span></div>
+                <p>針對段位晉升準備，深入探討形勢判斷、大局觀與終盤收官技巧，強化實戰應變能力。</p>
+            </div>
+            <div class="course-card">
+                <h3>高級研究班</h3>
+                <div class="course-meta">適合：高段位 / 競技選手 | 段位 1-4段</div>
+                <div class="course-price">$450 <span>/ 堂 (2小時)</span></div>
+                <p>高強度實戰覆盤，解析 AI 現代佈局勝率與定型手法，協助突破瓶頸邁向頂尖。</p>
+            </div>
+            <div class="course-card" style="border-top: 4px solid #4a6fa5;">
+                <h3>少數族裔圍棋班</h3>
+                <div class="course-meta">適合：少數族裔兒童 | 英文/普通話授課</div>
+                <div class="course-price" style="color:#4a6fa5;">免費 / 資助</div>
+                <p>專為多元文化社群開設，透過跨文化教學打破語言界限，推動社區共融發展。</p>
+            </div>
+        </div>
+
+        <div id="other-courses"></div>
+        <h3 class="section-title">未來技能 ‧ AI 培訓課程</h3>
+        <div class="course-grid">
+            <div class="course-card">
+                <h3>AI 基礎認知課程</h3>
+                <div class="course-meta">適合對象：小學高年級及中學生</div>
+                <div class="course-price">$200 <span>/ 堂 (1.5小時)</span></div>
+            </div>
+            <div class="course-card">
+                <h3>生成式 AI 實戰工作坊</h3>
+                <div class="course-meta">適合對象：中學生及在職人士</div>
+                <div class="course-price">$350 <span>/ 堂 (2小時)</span></div>
+            </div>
+            <div class="course-card">
+                <h3>AI 與未來職涯</h3>
+                <div class="course-meta">適合對象：青少年及在職人士</div>
+                <div class="course-price">$300 <span>/ 堂 (2小時)</span></div>
+            </div>
+        </div>
+
+        <h3 class="section-title">學術拔尖 ‧ 功課輔導班</h3>
+        <div class="course-grid">
+            <div class="course-card">
+                <h3>功課輔導班</h3>
+                <div class="course-meta">適合對象：中、小學生</div>
+                <div class="course-price">$150 <span>/ 堂 (1小時)</span></div>
+            </div>
+            <div class="course-card">
+                <h3>專科強化 (中/英/數/常)</h3>
+                <div class="course-meta">適合對象：中、小學生</div>
+                <div class="course-price">$200 <span>/ 堂 (1.5小時)</span></div>
+            </div>
+            <div class="course-card">
+                <h3>呈分試 / DSE 備戰訓練</h3>
+                <div class="course-meta">適合對象：小五至中六學生</div>
+                <div class="course-price">$280 <span>/ 堂 (1.5小時)</span></div>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <p>&copy; 2026 弈道圍棋教育平台. All Rights Reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Email: info@yidaogo.example.com | 電話: (02) 1234-5678</p>
+        <p>&copy; 2026 卓越多元學苑 (Ever Next Limited). All Rights Reserved.</p>
+        <div class="footer-contact">
+            聯絡人：<strong>彭老師 (Director)</strong><br>
+            電話：<strong>9826 2289</strong> | 電郵：<strong>lda_lfpang@evernext.hk</strong><br>
+            地址：新界荃灣沙咀道 29-35 號 科技廣場 22 樓 6 室 (Unit 6, 22/F)
+        </div>
     </footer>
 
     <!-- 幻燈片控制腳本 -->
